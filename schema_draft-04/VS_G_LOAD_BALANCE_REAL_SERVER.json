@@ -1,0 +1,148 @@
+{
+    "$id": "https://github.com/fortinet/fortiadc/declarative/load_balance_real_server.json",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "allOf": [
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "type": {"const": "fqdn"}
+            },
+            "required": ["FQDN"]
+          },
+          {
+            "not": {"required": ["FQDN"]}
+          }
+        ]
+      },
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "server_type": {"const": "dynamic_manual"}
+            },
+            "required": ["instance","sdn_connector"]
+          },
+          {
+            "not": {"required": ["instance","sdn_addr_private","sdn_connector"]}
+          }
+        ]
+      }
+    ],
+    "dependencies": {
+      "FQDN": {
+        "properties": {
+          "type": {"const": {"fqdn"}}
+        },
+        "required": ["type"]
+      },
+      "address": {
+        "properties": {
+          "type": {"const": "ip"}
+        },
+        "required": ["type"]
+      },
+      "address6": {
+        "properties": {
+          "type": {"const": "ip"}
+        },
+        "required": ["type"]
+      },
+      "instance": {
+        "properties": {
+          "server_type": {"const": "dynamic_manual"}
+        },
+        "required": ["server_type"]
+      },
+      "sdn_addr_private": {
+        "properties": {
+          "server_type": {"const": "dynamic_manual"}
+        },
+        "required": ["server_type"]
+      },
+      "sdn_connector": {
+        "properties": {
+          "server_type": {"const": "dynamic_manual"}
+        },
+        "required": ["server_type"]
+      },
+      "type": {
+        "properties": {
+          "server_type": {"const": "static"}
+        },
+        "required": ["server_type"]
+      }
+    },
+    "description": "load-balance real server info",
+    "properties": {
+        "FQDN": {
+            "description": "Fully Qualified Domain Name",
+            "type": "string"
+        },
+        "address": {
+            "default": "0.0.0.0",
+            "description": "ip address of interface",
+            "type": "string"
+        },
+        "address6": {
+            "default": "::",
+            "description": "ipv6 address of interface",
+            "type": "string"
+        },
+        "instance": {
+            "description": "instances filter",
+            "type": "string"
+        },
+        "mkey": {
+            "description": "real server name",
+            "pattern": "^[A-Za-z0-9.:_-]*$",
+            "type": "string"
+        },
+        "sdn_addr_private": {
+            "default": "disable",
+            "description": "use private node ip",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "sdn_connector": {
+            "description": "sdn connector",
+            "type": "string"
+        },
+        "server_type": {
+            "default": "static",
+            "description": "real server type",
+            "enum": [
+                "static",
+                "dynamic_auto",
+                "dynamic_manual"
+            ],
+            "type": "string"
+        },
+        "status": {
+            "default": "enable",
+            "description": "(en|dis)able/maintain real server",
+            "enum": [
+                "disable",
+                "enable",
+                "maintain"
+            ],
+            "type": "string"
+        },
+        "type": {
+            "default": "ip",
+            "description": "ip or fqdn",
+            "enum": [
+                "ip",
+                "fqdn"
+            ],
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "FortiADC load-balance real-server Specification",
+    "type": "object"
+}

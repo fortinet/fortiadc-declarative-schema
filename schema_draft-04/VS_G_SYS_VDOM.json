@@ -1,0 +1,100 @@
+{
+    "$id": "https://github.com/fortinet/fortiadc/declarative/system_vdom.json",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "description": "vdom resource configuration",
+    "properties": {
+        "concurrentsession": {
+            "default": "0",
+            "description": "CONCURRENT SESSION",
+            "type": "string"
+        },
+        "ep": {
+            "default": "0",
+            "description": "Error-page",
+            "type": "string"
+        },
+        "hc": {
+            "default": "0",
+            "description": "Health Check",
+            "type": "string"
+        },
+        "inbound": {
+            "default": "0",
+            "description": "Inbound traffic, Kbps",
+            "type": "string"
+        },
+        "l4cps": {
+            "default": "0",
+            "description": "L4 CPS",
+            "type": "string"
+        },
+        "l7cps": {
+            "default": "0",
+            "description": "L7 CPS",
+            "type": "string"
+        },
+        "l7rps": {
+            "default": "0",
+            "description": "L7 RPS",
+            "type": "string"
+        },
+        "lu": {
+            "default": "0",
+            "description": "Local User",
+            "type": "string"
+        },
+        "mkey": {
+            "description": "virtual domain name",
+            "pattern": "^[A-Z a-z0-9_.-]*@?[A-Za-z0-9_.-]*$",
+            "type": "string"
+        },
+        "outbound": {
+            "default": "0",
+            "description": "Outbound traffic, Kbps",
+            "type": "string"
+        },
+        "rs": {
+            "default": "0",
+            "description": "Real Server",
+            "type": "string"
+        },
+        "sp": {
+            "default": "0",
+            "description": "Source Pool",
+            "type": "string"
+        },
+        "sslcps": {
+            "default": "0",
+            "description": "SSL CPS",
+            "type": "string"
+        },
+        "sslthroughput": {
+            "default": "0",
+            "description": "SSL THROUGHPUT, Kbps",
+            "type": "string"
+        },
+        "status": {
+            "default": "disable",
+            "description": "enable/disable VDOM RLIMIT",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "ug": {
+            "default": "0",
+            "description": "User Group",
+            "type": "string"
+        },
+        "vs": {
+            "default": "0",
+            "description": "Virtual Server",
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "FortiADC system vdom Specification",
+    "type": "object"
+}

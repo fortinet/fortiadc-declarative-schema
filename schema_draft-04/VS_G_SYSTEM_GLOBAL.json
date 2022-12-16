@@ -1,0 +1,155 @@
+{
+    "$id": "https://github.com/fortinet/fortiadc/declarative/system_global.json",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "dependencies": {
+      "config-sync-port": {
+        "properties": {
+          "config-sync-enable": {"const": "enable"}
+        },
+        "required": ["config-sync-enable"]
+      }
+    },
+    "description": "system global configuration",
+    "properties": {
+        "admin-idle-timeout": {
+            "default": "30",
+            "description": "the idle time-out for system administration",
+            "type": "string"
+        },
+        "config-sync-enable": {
+            "default": "disable",
+            "description": "config sync enable",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "config-sync-port": {
+            "default": "995",
+            "description": "config sync port",
+            "type": "string"
+        },
+        "default-intermediate-ca-group": {
+            "description": "appliance\'s default ssl certificate chain",
+            "type": "string"
+        },
+        "gui-device-latitude": {
+            "description": "latitude between (-90, 90)",
+            "type": "string"
+        },
+        "gui-device-longtitude": {
+            "description": "longitude between (-180, 180)",
+            "type": "string"
+        },
+        "gui-log": {
+            "default": "enable",
+            "description": "Enable/disable menu log on Web GUI",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "gui-router": {
+            "default": "enable",
+            "description": "Enable/disable menu router on Web GUI",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "gui-system": {
+            "default": "enable",
+            "description": "Enable/disable menu system on Web GUI",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "hostname": {
+            "description": "appliance\'s host name",
+            "type": "string"
+        },
+        "http-port": {
+            "default": "80",
+            "description": "the port number of the http service",
+            "type": "string"
+        },
+        "https-port": {
+            "default": "443",
+            "description": "the port number of the https service",
+            "type": "string"
+        },
+        "https-redirect": {
+            "default": "enable",
+            "description": "HTTPS redirect enable/disable",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "https-server-cert": {
+            "default": "Factory",
+            "description": "appliance\'s local default certificate",
+            "type": "string"
+        },
+        "pre-login-banner": {
+            "default": "disable",
+            "description": "enable/disable pre-login-banner",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "ssh-port": {
+            "default": "22",
+            "description": "the port number of the ssh service",
+            "type": "string"
+        },
+        "sys-global-language": {
+            "default": "english",
+            "description": "Global GUI display language",
+            "enum": [
+                "english",
+                "chinese-simplified",
+                "japanese",
+                "spanish",
+                "chinese-traditional",
+                "portuguese"
+            ],
+            "type": "string"
+        },
+        "telnet-port": {
+            "default": "23",
+            "description": "the port number of the telnet service",
+            "type": "string"
+        },
+        "use-default-hostname": {
+            "default": "disable",
+            "description": "use-default-hostname enable/disable",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "vdom-admin": {
+            "default": "disable",
+            "description": "enable/disable ",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "FortiADC system global Specification",
+    "type": "object"
+}

@@ -1,0 +1,182 @@
+{
+    "$id": "https://github.com/fortinet/fortiadc/declarative/load_balance_pool.json",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "allOf": [
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "health_check": {"const": "enable"},
+              "direct_route_mode": {"const": "enable"},
+              "pool_type": {"const": "ipv6"}
+            },
+            "required": ["direct_route_ip6"]
+          },
+          {
+            "not": {"required": ["direct_route_ip6"]}
+          }
+        ]
+      },
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "health_check": {"const": "enable"},
+              "direct_route_mode": {"const": "enable"},
+              "pool_type": {"const": "ipv4"}
+            },
+            "required": ["direct_route_ip"]
+          },
+          {
+            "not": {"required": ["direct_route_ip"]}
+          }
+        ]
+      }
+    ],
+    "dependencies": {
+      "direct_route_ip6": {
+        "properties": {
+          "health_check": {"const": "enable"},
+          "direct_route_mode": {"const": "enable"},
+          "pool_type": {"const": "ipv6"}
+        },
+        "required": ["health_check","direct_route_mode","pool_type"]
+      },
+      "direct_route_ip": {
+        "properties": {
+          "health_check": {"const": "enable"},
+          "direct_route_mode": {"const": "enable"},
+          "pool_type": {"const": "ipv4"}
+        },
+        "required": ["health_check","direct_route_mode","pool_type"]
+      },
+      "direct_route_mode": {
+        "properties": {
+          "health_check": {"const": "enable"}
+        },
+        "required": ["health_check"]
+      },
+      "health_check_relationship": {
+        "properties": {
+          "health_check": {"const": "enable"}
+        },
+        "required": ["health_check"]
+      },
+      "sdn_addr_private": {
+        "properties": {
+          "type": {"const": "dynamic"}
+        },
+        "required": ["type"]
+      },
+      "sdn_connector": {
+        "properties": {
+          "type": {"const": "dynamic"}
+        },
+        "required": ["type"]
+      },
+      "service": {
+        "properties": {
+          "type": {"const": "dynamic"}
+        },
+        "required": ["type"]
+      },
+      "pool_type": {
+        "properties": {
+          "type": {"const": "static"}
+        },
+        "required": ["type"]
+      }
+    },
+    "description": "load-balance pool info",
+    "properties": {
+        "direct_route_ip": {
+            "default": "0.0.0.0",
+            "description": "direct route ip",
+            "type": "string"
+        },
+        "direct_route_ip6": {
+            "default": "::",
+            "description": "direct route ip6",
+            "type": "string"
+        },
+        "direct_route_mode": {
+            "default": "disable",
+            "description": "direct route mode",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "health_check": {
+            "default": "disable",
+            "description": "health check control",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "health_check_list": {
+            "description": "health check list",
+            "type": "string"
+        },
+        "health_check_relationship": {
+            "default": "AND",
+            "description": "health check relationship",
+            "enum": [
+                "AND",
+                "OR"
+            ],
+            "type": "string"
+        },
+        "mkey": {
+            "description": "pool name",
+            "pattern": "^[A-Za-z0-9.:_-]*$",
+            "type": "string"
+        },
+        "pool_type": {
+            "default": "ipv4",
+            "description": "address type",
+            "enum": [
+                "ipv4",
+                "ipv6"
+            ],
+            "type": "string"
+        },
+        "rs_profile": {
+            "description": "real server SSL profile name",
+            "type": "string"
+        },
+        "sdn_addr_private": {
+            "default": "disable",
+            "description": "use private node ip",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "sdn_connector": {
+            "description": "sdn connector",
+            "type": "string"
+        },
+        "service": {
+            "description": "service",
+            "type": "string"
+        },
+        "type": {
+            "default": "static",
+            "description": "pool type",
+            "enum": [
+                "static",
+                "dynamic"
+            ],
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "FortiADC load-balance pool Specification",
+    "type": "object"
+}

@@ -1,0 +1,684 @@
+{
+    "$id": "https://github.com/fortinet/fortiadc/declarative/load_balance_virtual_server.json",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "description": "load-balance virtual-server info",
+    "properties": {
+        "addr-type": {
+            "default": "ipv4",
+            "description": "address type",
+            "enum": [
+                "ipv4",
+                "ipv6"
+            ],
+            "type": "string"
+        },
+        "address": {
+            "default": "0.0.0.0",
+            "description": "ip address of virtual server",
+            "type": "string"
+        },
+        "address6": {
+            "default": "::",
+            "description": "ipv6 address of virtual server",
+            "type": "string"
+        },
+        "adfs-published-service": {
+            "description": "AD FS published service",
+            "type": "string"
+        },
+        "alone": {
+            "default": "enable",
+            "description": "enable/disable alone mode",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "auth_policy": {
+            "description": "authentication policy name",
+            "type": "string"
+        },
+        "av-profile": {
+            "description": "antivirus profile name",
+            "type": "string"
+        },
+        "azure-lb-backend": {
+            "description": "azure lb backend name",
+            "type": "string"
+        },
+        "captcha-profile": {
+            "description": "Captcha profile",
+            "type": "string"
+        },
+        "client_ssl_profile": {
+            "description": "client SSL profile (needed for https tcps smtp ftp)",
+            "type": "string"
+        },
+        "clone-pool": {
+            "description": "clone pool name",
+            "type": "string"
+        },
+        "clone-traffic-type": {
+            "default": "both-sides",
+            "description": "the traffic type to be cloned",
+            "enum": [
+                "both-sides",
+                "client-side",
+                "server-side"
+            ],
+            "type": "string"
+        },
+        "comments": {
+            "default": "",
+            "description": "virtual server comments",
+            "type": "string"
+        },
+        "connection-limit": {
+            "default": "0",
+            "description": "connection-limit",
+            "type": "string"
+        },
+        "connection-pool": {
+            "description": "connection pool name",
+            "type": "string"
+        },
+        "connection-rate-limit": {
+            "default": "0",
+            "description": "virtual server connection rate limit(0 - disable)",
+            "type": "string"
+        },
+        "content-rewriting": {
+            "default": "disable",
+            "description": "content rewriting",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "content-rewriting-list": {
+            "description": "content rewriting list",
+            "type": "string"
+        },
+        "content-routing": {
+            "default": "disable",
+            "description": "content routing",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "content-routing-list": {
+            "description": "content routing list",
+            "type": "string"
+        },
+        "domain-name": {
+            "description": "virtual server domainname on one click gslb server",
+            "type": "string"
+        },
+        "dos_profile": {
+            "description": "DoS profile name",
+            "type": "string"
+        },
+        "error-msg": {
+            "default": "'Server-unavailable!'",
+            "description": "error message",
+            "type": "string"
+        },
+        "error-page": {
+            "description": "error-page name",
+            "type": "string"
+        },
+        "fortiview": {
+            "default": "disable",
+            "description": "enable/disable fortiview",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "host-name": {
+            "description": "virtual server hostname on one click gslb server",
+            "type": "string"
+        },
+        "http2https": {
+            "default": "disable",
+            "description": "enable/disable redirect HTTP request to HTTPS",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "http2https-port": {
+            "default": "80",
+            "description": "HTTP service port list for redirecting HTTP to HTTPS",
+            "type": "string"
+        },
+        "interface": {
+            "description": "interface name",
+            "type": "string"
+        },
+        "ips_profile": {
+            "description": "IPS profile name",
+            "type": "string"
+        },
+        "l2-exception-list": {
+            "description": "layer2 exception list",
+            "type": "string"
+        },
+        "method": {
+            "description": "method name",
+            "type": "string"
+        },
+        "mkey": {
+            "description": "virtual-server name",
+            "pattern": "^[A-Za-z0-9_-]*$",
+            "type": "string"
+        },
+        "one-click-gslb-server": {
+            "default": "disable",
+            "description": "enable/disable setting one click gslb server",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "packet-fwd-method": {
+            "default": "NAT",
+            "description": "packet forwarding method",
+            "enum": [
+                "direct_routing",
+                "NAT",
+                "FullNAT",
+                "NAT46",
+                "NAT64",
+                "tunneling"
+            ],
+            "type": "string"
+        },
+        "pagespeed": {
+            "description": "virtual server pagespeed",
+            "type": "string"
+        },
+        "persistence": {
+            "description": "persistence name",
+            "type": "string"
+        },
+        "pool": {
+            "description": "pool name",
+            "type": "string"
+        },
+        "port": {
+            "default": "80",
+            "description": "virtual server service port",
+            "type": "string"
+        },
+        "profile": {
+            "description": "profile name",
+            "type": "string"
+        },
+        "protocol": {
+            "default": "0",
+            "description": "virtual server protocol numbers",
+            "type": "string"
+        },
+        "public-ip": {
+            "default": "0.0.0.0",
+            "description": "public ip address of virtual server",
+            "type": "string"
+        },
+        "public-ip-type": {
+            "default": "ipv4",
+            "description": "address type",
+            "enum": [
+                "ipv4",
+                "ipv6"
+            ],
+            "type": "string"
+        },
+        "public-ip6": {
+            "default": "::",
+            "description": "public ip address of virtual server",
+            "type": "string"
+        },
+        "schedule-list": {
+            "default": "disable",
+            "description": "enable/disable schedule list",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "schedule-pool-list": {
+            "description": "schedule pool name",
+            "type": "string"
+        },
+        "scripting_flag": {
+            "default": "disable",
+            "description": "enable/disable virtual server scripting",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "scripting_list": {
+            "description": "virtual server scripting list",
+            "type": "string"
+        },
+        "source-pool-list": {
+            "description": "ip pool name",
+            "type": "string"
+        },
+        "ssl-mirror": {
+            "default": "disable",
+            "description": "enable/disable SSL mirror",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "ssl-mirror-intf": {
+            "description": "interface list to mirror",
+            "type": "string"
+        },
+        "status": {
+            "default": "enable",
+            "description": "enable/maintain/disable virtual server",
+            "enum": [
+                "disable",
+                "enable",
+                "maintain"
+            ],
+            "type": "string"
+        },
+        "stream_scripting_flag": {
+            "default": "disable",
+            "description": "enable/disable virtual server stream scripting",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "stream_scripting_list": {
+            "description": "virtual server scripting list",
+            "type": "string"
+        },
+        "traffic-group": {
+            "description": "traffic group name",
+            "type": "string"
+        },
+        "traffic-log": {
+            "default": "disable",
+            "description": "enable/disable traffic log",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "trans-rate-limit": {
+            "default": "0",
+            "description": "virtual server transactions rate limit",
+            "type": "string"
+        },
+        "type": {
+            "default": "l4-load-balance",
+            "description": "virtual-server service type",
+            "enum": [
+                "l4-load-balance",
+                "l7-load-balance",
+                "l2-load-balance"
+            ],
+            "type": "string"
+        },
+        "use-azure-lb-backend-ip": {
+            "default": "disable",
+            "description": "use azure lb backend ip",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "waf-profile": {
+            "description": "web application firewall profile name",
+            "type": "string"
+        },
+        "warmrate": {
+            "default": "100",
+            "description": "virtual server warm up rate",
+            "type": "string"
+        },
+        "warmup": {
+            "default": "0",
+            "description": "virtual server warm up time",
+            "type": "string"
+        },
+        "wccp": {
+            "default": "disable",
+            "description": "enable/disable redirect HTTP/HTTPS request to WCCP client",
+            "enum": [
+                "disable",
+                "enable"
+            ],
+            "type": "string"
+        },
+        "ztna_profile": {
+            "description": "ZTNA profile name",
+            "type": "string"
+        }
+    },
+    "allOf": [
+      {
+        "oneOf": [
+          {"required": ["azure-lb-backend"]},
+          {"properties": {"use-azure-lb-backend-ip": {"not": {"const": "enable"}}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["content-rewriting-list"]},
+          {"properties": {"content-rewriting": {"const": "disable"}}},
+          {"properties": {"type": {"const": "l4-load-balance"}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["content-routing-list"]},
+          {"properties": {"content-routing": {"const": "disable"}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["domain-name"]},
+          {"properties": {"type": {"const": "l2-load-balance"}}},
+          {"properties": {"one-click-gslb-server": {"const": "disable"}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"properties": {"type": {"not": {"const": "l2-load-balance"}}}},
+          {"not": {"required": ["public-ip-type"]}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["pool"]},
+          {"properties": {"content-routing": {"const": "enable"}}},
+          {"properties": {"schedule-list": {"const": "enable"}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["scripting_list"]},
+          {"properties": {"scripting_flag": {"const": "disable"}}},
+          {"properties": {"type": {"const": "l4-load-balance"}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["ssl-mirror-intf"]},
+          {"properties": {"ssl-mirror": {"const": "disable"}}}
+        ]
+      },
+      {
+        "oneOf": [
+          {"required": ["stream_scripting_list"]},
+          {"properties": {"type": {"not": {"const": "l7-load-balance"}}}},
+          {"properties": {"stream_scripting_flag": {"const": "disable"}}}
+        ]
+      }
+    ],
+    "dependencies": {
+      "address": {
+        "properties": {
+          "addr-type": {"const": "ipv4"},
+          "type": {"not": {"const": "l2-load-balance"}}
+        },
+        "required": ["addr-type","type"]
+      },
+      "address6": {
+        "properties": {
+          "addr-type": {"const": "ipv6"},
+          "type": {"not": {"const": "l2-load-balance"}}
+        },
+        "required": ["addr-type","type"]
+      },
+      "adfs-published-service": {
+        "properties": {
+          "type": {"const": "l7-load-balance"},
+          "content-routing": {"const": "disable"},
+          "schedule-list": {"const": "disable"}
+        },
+        "required": ["type","content-routing","schedule-list"]
+      },
+      "alone": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "auth_policy": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "av-profile": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "azure-lb-backend": {
+        "properties": {
+          "use-azure-lb-backend-ip": {"const": "enable"}
+        },
+        "required": ["use-azure-lb-backend-ip"]
+      },
+      "captcha-profile": {
+        "properties": {
+          "type": {"not": {"const": "l4-load-balance"}}
+        },
+        "required": ["type"]
+      },
+      "connection-pool": {
+        "properties": {
+          "type": {"const": "l7-load-balance"}
+        },
+        "required": ["type"]
+      },
+      "pagespeed": {
+        "properties": {
+          "type": {"const": "l7-load-balance"}
+        },
+        "required": ["type"]
+      },
+      "stream_scripting_flag": {
+        "properties": {
+          "type": {"const": "l7-load-balance"}
+        },
+        "required": ["type"]
+      },
+      "wccp": {
+        "properties": {
+          "type": {"const": "l7-load-balance"}
+        },
+        "required": ["type"]
+      },
+      "connection-rate-limit": {
+        "properties": {
+          "type": {"const": "l4-load-balance"}
+        },
+        "required": ["type"]
+      },
+      "packet-fwd-method": {
+        "properties": {
+          "type": {"const": "l4-load-balance"}
+        },
+        "required": ["type"]
+      },
+      "content-rewriting": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "content-rewriting-list": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]},
+          "content-rewriting": {"const": "enable"}
+        },
+        "required": ["type","content-rewriting"]
+      },
+      "content-routing-list": {
+        "properties": {
+          "content-routing": {"const": "enable"}
+        },
+        "required": ["content-routing"]
+      },
+      "domain-name": {
+        "properties": {
+          "type": {"enum": ["l4-load-balance","l7-load-balance"]},
+          "one-click-gslb-server": {"const": "enable"}
+        },
+        "required": ["type","one-click-gslb-server"]
+      },
+      "dos_profile": {
+        "properties": {
+          "type": {"enum": ["l4-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "error-msg": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "http2https": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "http2https-port": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]},
+          "http2https": {"const": "enable"}
+        },
+        "required": ["type","http2https"]
+      },
+      "ips_profile": {
+        "properties": {
+          "type": {"const": "l4-load-balance"},
+          "addr-type": {"const": "ipv4"},
+          "packet-fwd-method": {"not": {"const": "NAT46"}}
+        },
+        "required": ["type","addr-type","packet-fwd-method"]
+      },
+      "l2-exception-list": {
+        "properties": {
+          "type": {"const": "l2-load-balance"}
+        },
+        "required": ["type"],
+        "not": {"required": ["public-ip-type"]}
+      },
+      "one-click-gslb-server": {
+        "properties": {
+          "type": {"enum": ["l4-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "pool": {
+        "properties": {
+          "content-routing": {"const": "disable"},
+          "schedule-list": {"const": "disable"}
+        },
+        "required": ["content-routing","schedule-list"]
+      },
+      "public-ip": {
+        "properties": {
+          "public-ip-type": {"const": "ipv4"},
+          "type": {"not": {"const": "l2-load-balance"}}
+        },
+        "required": ["public-ip-type","type"]
+      },
+      "public-ip6": {
+        "properties": {
+          "public-ip-type": {"const": "ipv6"},
+          "type": {"not": {"const": "l2-load-balance"}}
+        },
+        "required": ["public-ip-type","type"]
+      },
+      "schedule-pool-list": {
+        "properties": {
+          "schedule-list": {"const": "enable"}
+        },
+        "required": ["schedule-list"]
+      },
+      "scripting_flag": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "scripting_list": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]},
+          "scripting_flag": {"const": "enable"}
+        },
+        "required": ["type","scripting_flag"]
+      },
+      "source-pool-list": {
+        "properties": {
+          "type": {"enum": ["l4-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "ssl-mirror-intf": {
+        "properties": {
+          "ssl-mirror": {"const": "enable"}
+        },
+        "required": ["ssl-mirror"]
+      },
+      "stream_scripting_list": {
+        "properties": {
+          "type": {"const": "l7-load-balance"},
+          "stream_scripting_flag": {"const": "enable"}
+        },
+        "required": ["type","stream_scripting_flag"]
+      },
+      "trans-rate-limit": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "waf-profile": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+      "ztna_profile": {
+        "properties": {
+          "type": {"enum": ["l2-load-balance","l7-load-balance"]}
+        },
+        "required": ["type"]
+      },
+    },
+    "required": [],
+    "title": "FortiADC load-balance virtual-server Specification",
+    "type": "object"
+}

@@ -1,0 +1,30 @@
+{
+    "$id": "https://github.com/fortinet/fortiadc/declarative/router_static.json",
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "description": "route configuration",
+    "properties": {
+        "dest": {
+            "default": "0.0.0.0/0",
+            "description": "Destination for this route",
+            "type": "string"
+        },
+        "distance": {
+            "default": "10",
+            "description": "distance for this route",
+            "type": "string"
+        },
+        "gw": {
+            "default": "0.0.0.0",
+            "description": "Gateway for this route",
+            "type": "string"
+        },
+        "mkey": {
+            "description": "The number of the route",
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "FortiADC router static Specification",
+    "type": "object"
+}

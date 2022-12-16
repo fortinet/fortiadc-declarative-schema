@@ -1,0 +1,240 @@
+{
+  "$id": "https://github.com/fortinet/fortiadc/declarative-schema/system_admin.json",
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "admin-type": {
+        "default": "normal",
+        "description": "Type of Admin",
+        "enum": [
+            "normal",
+            "restapi"
+        ],
+        "type": "string"
+    },
+    "api-key": {
+        "description": "RESTAPI Access Token",
+        "type": "string"
+    },
+    "auth_ldap_server_id": {
+        "description": "ldap server",
+        "type": "string"
+    },
+    "auth_radius_server_id": {
+        "description": "radius server",
+        "type": "string"
+    },
+    "auth_strategy": {
+        "default": "local",
+        "description": "admin user auth strategy: local/radius/ldap",
+        "enum": [
+            "local",
+            "radius",
+            "ldap"
+        ],
+        "type": "string"
+    },
+    "comments": {
+        "description": "admin comments",
+        "type": "string"
+    },
+    "cors-allow-origin": {
+        "description": "CORS Allow Origin Access",
+        "type": "string"
+    },
+    "is-system-admin": {
+        "default": "no",
+        "description": "if admin can access all domains",
+        "enum": [
+            "no",
+            "yes"
+        ],
+        "type": "string"
+    },
+    "mailto": {
+        "description": "This administrator\'s email address.",
+        "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
+        "type": "string"
+    },
+    "mkey": {
+        "description": "admin user name",
+        "pattern": "^[A-Z a-z0-9_.-]*@?[A-Za-z0-9_.-]*$",
+        "type": "string"
+    },
+    "passwd": {
+        "description": "admin user password",
+        "type": "string"
+    },
+    "profile": {
+        "description": "admin user access profile",
+        "type": "string"
+    },
+    "sms-phone": {
+        "description": "Phone number on which the administrator receives SMS messages.(combine the country code with phone number and no plus sign needed.)",
+        "pattern": "^[0-9]*$",
+        "type": "string"
+    },
+    "tfa-type": {
+        "default": "none",
+        "description": "Enable/disable two-factor authentication.",
+        "enum": [
+            "none",
+            "fortitoken-cloud"
+        ],
+        "type": "string"
+    },
+    "trusted-host": {
+        "default": "0.0.0.0/0 ::/0",
+        "description": "trusted hosts",
+        "type": "string"
+    },
+    "vdom": {
+        "description": "admin user domain",
+        "type": "string"
+    },
+    "wildcard": {
+        "default": "disable",
+        "description": "Enable/Disable user wildcard for remote server authentication",
+        "enum": [
+            "disable",
+            "enable"
+        ],
+        "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "admin user configuration",
+  "required": ["mkey","admin-type","is-system-admin"],
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "admin-type": {"const": "restapi"}
+          }
+        },
+        {
+          "required": ["auth_strategy"],
+          "oneOf": [
+            {
+              "properties": {
+                "auth_strategy": {"const": "local"}
+              },
+              "required": ["passwd","tfa-type"]
+              "not": {"required": ["wildcard"]},
+              "oneOf": [
+                {
+                  "properties": {
+                    "tfa-type": {"const": "none"}
+                  }
+                },
+                {
+                  "required": ["sms-phone","mailto"]
+                }
+              ]
+            },
+            {
+              "properties": {
+                "auth_strategy": {"const": "ldap"}
+              },
+              "required": ["auth_ldap_server_id"]
+            },
+            {
+              "properties": {
+                "auth_strategy": {"const": "radius"}
+              },
+              "required": ["auth_radius_server_id"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "is-system-admin": {"const": "yes"}
+          }
+        },
+        {
+          "required": ["profile","vdom"]
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "api-key": {
+      "properties": {
+        "admin-type": {"const": "restapi"}
+      },
+      "required": ["admin-type"]
+    },
+    "cors-allow-origin": {
+      "properties": {
+        "admin-type": {"const": "restapi"}
+      },
+      "required": ["admin-type"]
+    },
+    "profile": {
+      "properties": {
+        "is-system-admin": {"const": "no"}
+      },
+      "required": ["is-system-admin"]
+    },
+    "vdom": {
+      "properties": {
+        "is-system-admin": {"const": "no"}
+      },
+      "required": ["is-system-admin"]
+    },
+    "auth_strategy": {
+      "properties": {
+        "admin-type": {"const": "normal"}
+      },
+      "required": ["admin-type"]
+    },
+    "auth_ldap_server_id": {
+      "properties": {
+        "auth_strategy": {"const": "ldap"}
+      },
+      "required": ["auth_strategy"]
+    },
+    "auth_radius_server_id": {
+      "properties": {
+        "auth_strategy": {"const": "radius"}
+      },
+      "required": ["auth_strategy"]
+    },
+    "passwd": {
+      "properties": {
+        "auth_strategy": {"const": "local"}
+      },
+      "required": ["auth_strategy"]
+    },
+    "tfa-type": {
+      "properties": {
+        "auth_strategy": {"const": "local"}
+      },
+      "required": ["auth_strategy"]
+    },
+    "wildcard": {
+      "properties": {
+        "auth_strategy": {"not": {"const": "local"}}
+      },
+      "required": ["auth_strategy"]
+    },
+    "mailto": {
+      "properties": {
+        "tfa-type": {"const": "fortitoken-cloud"}
+      },
+      "required": ["tfa-type"]
+    },
+    "sms-phone": {
+      "properties": {
+        "tfa-type": {"const": "fortitoken-cloud"}
+      },
+      "required": ["tfa-type"]
+    }
+  },
+  "title": "FortiADC system admin Specification"
+}
